@@ -302,7 +302,7 @@
       const q = document.getElementById('query-input').value.trim();
       if (q.length < 2) { closeDropdown(); return; }
       try {
-        const res = await fetch('http://localhost:5000/suggest?q=' + encodeURIComponent(q));
+        const res = await fetch('/suggest?q=' + encodeURIComponent(q));
         const data = await res.json();
         suggestions = data.suggestions || [];
         renderDropdown(suggestions);
@@ -350,7 +350,7 @@
       document.getElementById('main').classList.add('has-results');
 
       try {
-        const res = await fetch(`http://localhost:5000/search?q=${encodeURIComponent(query)}&n=20`);
+        const res = await fetch(`/search?q=${encodeURIComponent(query)}&n=20`);
 
         if (!res.ok) throw new Error('Server error: ' + res.status);
 
