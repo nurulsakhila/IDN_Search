@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import pandas as pd
 import string
@@ -103,10 +103,7 @@ def calculate_metrics(query_raw, query_tokens, retrieved_indices):
 # ─── Endpoint Pencarian ────────────────────────────────────────────────────
 @app.route("/")
 def home():
-    return {
-        "status": "online",
-        "message": "IDN Search API berjalan"
-    }
+    return send_file("google-merah.html")
 @app.route('/search')
 def search():
     query_raw = request.args.get('q', '').strip()
