@@ -101,6 +101,12 @@ def calculate_metrics(query_raw, query_tokens, retrieved_indices):
     }
 
 # ─── Endpoint Pencarian ────────────────────────────────────────────────────
+@app.route("/")
+def home():
+    return {
+        "status": "online",
+        "message": "IDN Search API berjalan"
+    }
 @app.route('/search')
 def search():
     query_raw = request.args.get('q', '').strip()
